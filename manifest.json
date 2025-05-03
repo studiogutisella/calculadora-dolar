@@ -1,0 +1,13 @@
+{
+  "name": "Calculadora de Compras",
+  "short_name": "Calculadora",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "description": "App para calcular compras con conversión de moneda",
+  "icons": [{
+    "src": "icon.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }]
+}
