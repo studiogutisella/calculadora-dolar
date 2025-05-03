@@ -18,8 +18,9 @@
     7. Calculadora de avance con comisión configurable (ahora con monto en Bs)
     8. Área de notas full-width en móviles y responsive en desktop
     9. Diseño oscuro optimizado para móviles
-    10. Funcionalidad de deselección al presionar Enter
-    11. Actualización automática de totales
+    10. Botón de añadir ítem centrado encima del botón de limpiar
+    11. Funcionalidad de deselección al presionar Enter
+    12. Actualización automática de totales
     
     Tecnologías utilizadas: HTML5, CSS3 (modo oscuro y responsive), JavaScript (lógica de negocio)
     -->
@@ -192,18 +193,29 @@
         }
 
         .add-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
+            display: block;
+            margin: 20px auto 10px;
+            width: 60%;
+            max-width: 300px;
+            padding: 10px;
             background: #4CAF50;
             border: none;
-            border-radius: 50%;
+            border-radius: 4px;
             color: white;
-            font-size: 2.5em;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            font-size: 1.5em;
             cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            font-weight: bold;
+        }
+
+        /* Botón de añadir ítem para móviles */
+        @media (max-width: 480px) {
+            .add-btn {
+                width: 90%;
+                max-width: 100%;
+                font-size: 1.3em;
+                margin: 15px auto 10px;
+            }
         }
 
         .converter-header {
@@ -277,22 +289,11 @@
             }
             .price-input { width: 35%; }
             .quantity-input { width: 35px; }
-            .add-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 2em;
-                bottom: 10px;
-                right: 10px;
-            }
             .total-section {
                 font-size: 1em;
             }
             
             /* Estilos específicos para móviles */
-            .notes-section {
-                margin: 0;
-            }
-            
             .notes-section .notes-container {
                 padding: 0 8px;
             }
@@ -317,6 +318,9 @@
         
         <div class="item-list" id="itemList"></div>
         
+        <!-- Botón de añadir ítem centrado -->
+        <button class="add-btn" onclick="addItem()">+ Añadir Ítem</button>
+        
         <div class="total-section">
             <div class="total-line">
                 Total a Pagar: Bs <span id="total-bs">0.00</span>
@@ -324,6 +328,8 @@
             <div class="total-line">
                 Total en USD: $<span id="total-usd">0.00</span>
             </div>
+            
+            <!-- Botón de limpiar centrado -->
             <button class="clear-btn" onclick="clearList()">Limpiar Lista</button>
             
             <div class="converter-item">
@@ -357,7 +363,7 @@
                 </div>
             </div>
         </div>
-    
+        
         <!-- Sección de notas full-width -->
         <div class="notes-section">
             <div class="notes-container">
@@ -370,8 +376,8 @@
     
     </div>
     
-    <button class="add-btn" onclick="addItem()">+</button>
-
+    <!-- Botón flotante eliminado ya que ahora está integrado en el flujo principal -->
+    
     <script>
         // Configura la funcionalidad de deselección al presionar Enter
         function setupDeselection(input) {
